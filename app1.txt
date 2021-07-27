@@ -1,0 +1,25 @@
+export { };
+import axios, { AxiosRequestConfig, AxiosPromise, AxiosResponse } from 'axios';
+//import axios from axios;
+const jokes: HTMLElement = document.querySelector("#joke") as HTMLElement;
+const button: HTMLElement = document.querySelector("button.btn-primary");
+
+const addNewJoke = async () => {
+   // const jokeText: string = await getDadJoke();
+    //console.log(jokeText)
+    const newP: HTMLElement = document.createElement('P');
+    newP.append(jokeText);
+    jokes.append(newP);
+}
+
+const getDadJoke: object = async () => {
+
+
+    const config = { headers: { Accept: "application/json" } };
+   
+    const res: object = await axios.get("https://icanhazdadjoke.com/", config);
+
+   // return (res.data.joke);
+}
+
+button.addEventListener("click", addNewJoke as EventListener);
