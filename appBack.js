@@ -3,11 +3,28 @@ const addNewJoke = async() => {
     jokeText = await getDadJoke();
     document.getElementById("joke").innerHTML = jokeText;
 };
+
 const getDadJoke = async() => {
-    const config = { headers: { Accept: "application/json" } };
-    const res = await axios.get("https://icanhazdadjoke.com/", config);
-    return res.data.joke;
+    if (Math.ceil(Math.random() * 2) == 2) {
+        const config = { headers: { Accept: "application/json" } };
+        const res = await axios.get("https://icanhazdadjoke.com/", config);
+        return res.data.joke;
+    } else {
+        //const config = { headers: { Accept: "application/json" } };
+        const res = await axios.get("https://api.chucknorris.io/jokes/random");
+        console.log(res.data.value)
+        return res.data.value;
+        // fetch("https://api.chucknorris.io/jokes/random")
+        //     .then((rexx) => rexx.json())
+        //     .then((res) => {
+        //         console.log(res.value);
+        //         return res.value;
+        //     })
+        //     .catch((errrror) => console.log("you catched chukkkks"));
+    }
 };
+
+
 
 document
     .querySelector("button.btn-success")
@@ -103,7 +120,8 @@ switch (day) {
 document.getElementById("day").innerHTML = day;
 
 // var todayDate = new Date().getDay()
-document.getElementById("weather-date").innerHTML = today.getFullYear() +
+document.getElementById("weather-date").innerHTML =
+    today.getFullYear() +
     "-" +
     (today.getMonth() + 1) +
     "-" +
@@ -113,3 +131,42 @@ document.getElementById("weather-date").innerHTML = today.getFullYear() +
     today.getHours() +
     ":" +
     today.getMinutes();
+
+fetch(
+        "https://api.openweathermap.org/data/2.5/weather?q=Barcelona&appid=9222249f0f6804cdc4bf807404b3a139"
+    )
+    .then((response) => response.json())
+    .then((data) => {
+        document.querySelector(".tempBarcelona").innerHTML =
+            "Barcelona Temperature is:" + data.main.temp + "°C";
+    })
+    .catch((erro) => console.log("checkbarcelona data", data));
+
+var button = document.querySelector(".button");
+var inputValue = document.querySelector(".inputValue");
+var cityName = document.querySelector(".name");
+var desc = document.querySelector(".desc");
+var temp = document.querySelector(".temp");
+var country = document.querySelector(".country");
+
+button.addEventListener("click", function() {
+    fetch(
+            "https://api.openweathermap.org/data/2.5/weather?q=" +
+            inputValue.value +
+            "&appid=9222249f0f6804cdc4bf807404b3a139"
+        )
+        .then((response) => response.json())
+        .then((data) => {
+            console.log("check now", data.sys.country);
+            var nameValue = data["name"];
+            var temValue = data.main.temp;
+            var descValue = data.weather[0].description;
+            var countryValue = data.sys.country;
+
+            cityName.innerHTML = nameValue;
+            desc.innerHTML = descValue;
+            temp.innerHTML = temValue + " °C";
+            country.innerHTML = ", " + countryValue;
+        })
+        .catch((error) => console.log("===>wrong smth"));
+});
