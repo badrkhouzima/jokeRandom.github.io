@@ -154,8 +154,7 @@
             body {
                 background: #ebefff;
             }
-            
-            .wrap {
+            /* .wrap {
                 width: 250px;
                 height: 50px;
                 background: #fff;
@@ -164,150 +163,8 @@
                 left: 50%;
                 transform: translate(-50%, -50%);
                 border-radius: 10px;
-            }
-            
-            .stars {
-                width: fit-content;
-                margin: 0 auto;
-                cursor: pointer;
-            }
-            
-            .star {
-                color: #91a6ff;
-            }
-            
-            .rate {
-                height: 50px;
-                margin-left: -5px;
-                padding: 5px;
-                font-size: 25px;
-                position: relative;
-                cursor: pointer;
-            }
-            
-            .rate input[type="radio"] {
-                opacity: 0;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, 0%);
-                pointer-events: none;
-            }
-            
-            .star-over::after {
-                font-family: 'Font Awesome 5 Free';
-                font-weight: 900;
-                font-size: 16px;
-                content: "\f005";
-                display: inline-block;
-                color: #d3dcff;
-                z-index: 1;
-                position: absolute;
-                top: 17px;
-                left: 10px;
-            }
-            
-            .rate:nth-child(1) .face::after {
-                content: "\f119";
-                /* ☹ */
-            }
-            
-            .rate:nth-child(2) .face::after {
-                content: "\f11a";
-                /* 😐 */
-            }
-            
-            .rate:nth-child(3) .face::after {
-                content: "\f118";
-                /* 🙂 */
-            }
-            
-            .rate:nth-child(4) .face::after {
-                content: "\f580";
-                /* 😊 */
-            }
-            
-            .rate:nth-child(5) .face::after {
-                content: "\f59a";
-                /* 😄 */
-            }
-            
-            .face {
-                opacity: 0;
-                position: absolute;
-                width: 35px;
-                height: 35px;
-                background: #91a6ff;
-                border-radius: 5px;
-                top: -50px;
-                left: 2px;
-                transition: 0.2s;
-                pointer-events: none;
-            }
-            
-            .face::before {
-                font-family: 'Font Awesome 5 Free';
-                font-weight: 900;
-                content: "\f0dd";
-                display: inline-block;
-                color: #91a6ff;
-                z-index: 1;
-                position: absolute;
-                left: 9px;
-                bottom: -15px;
-            }
-            
-            .face::after {
-                font-family: 'Font Awesome 5 Free';
-                font-weight: 900;
-                display: inline-block;
-                color: #fff;
-                z-index: 1;
-                position: absolute;
-                left: 5px;
-                top: -1px;
-            }
-            
-            .rate:hover .face {
-                opacity: 1;
-            }
-            /* Not sure if I like this or not. */
-            /* Makes the emoji stay displayed */
-            /* input[type="radio"]:checked + .face {
-                opacity: 1 !important;
+                border-color: black;
             } */
-            
-            body {
-                height: 100vh;
-                display: grid;
-                place-items: center;
-                overflow: hidden;
-            }
-            
-            .rating {
-                position: relative;
-                width: 180px;
-                background: transparent;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: .3em;
-                padding: 5px;
-                overflow: hidden;
-                border-radius: 20px;
-                box-shadow: 0 0 2px #b3acac;
-            }
-            
-            .rating__result {
-                position: absolute;
-                top: 0;
-                left: 0;
-                transform: translateY(-10px) translateX(-5px);
-                z-index: -9;
-                font: 3em Arial, Helvetica, sans-serif;
-                color: #a09b9b8e;
-                pointer-events: none;
-            }
             
             .rating__star {
                 font-size: 1.3em;
@@ -323,4 +180,24 @@
             .btn2 {
                 padding: 10px;
                 margin-top: 20px;
+                display: flex;
+                justify-content: center;
             }
+            
+            .rating {
+                display: flex;
+                justify-content: center;
+            }
+            
+            .wrap {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            
+            p.card-text {
+                color: #000;
+                font-size: 2em;
+                font-weight: 900;
+            }
+            /* weather section*/
