@@ -5,14 +5,13 @@ const addNewJoke = async() => {
 };
 
 const getDadJoke = async() => {
-    if (Math.ceil(Math.random() * 2) == 2) {
+    if (Math.ceil(Math.random() * 3) == 1) {
         const config = { headers: { Accept: "application/json" } };
         const res = await axios.get("https://icanhazdadjoke.com/", config);
         return res.data.joke;
-    } else {
-        //const config = { headers: { Accept: "application/json" } };
+    } else if (Math.ceil(Math.random() * 3) == 2) {
         const res = await axios.get("https://api.chucknorris.io/jokes/random");
-        console.log(res.data.value)
+        console.log(res.data.value);
         return res.data.value;
         // fetch("https://api.chucknorris.io/jokes/random")
         //     .then((rexx) => rexx.json())
@@ -21,10 +20,13 @@ const getDadJoke = async() => {
         //         return res.value;
         //     })
         //     .catch((errrror) => console.log("you catched chukkkks"));
+    } else {
+        const res = await axios.get("https://official-joke-api.appspot.com/random_joke");
+        console.log("the third api==>", res.data.setup);
+        return res.data.setup;
+
     }
 };
-
-
 
 document
     .querySelector("button.btn-success")
