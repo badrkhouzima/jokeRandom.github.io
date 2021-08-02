@@ -3,7 +3,6 @@ const addNewJoke = async() => {
     jokeText = await getDadJoke();
     document.getElementById("joke").innerHTML = jokeText;
 };
-
 const getDadJoke = async() => {
     if (Math.ceil(Math.random() * 3) == 1) {
         const config = { headers: { Accept: "application/json" } };
@@ -21,10 +20,11 @@ const getDadJoke = async() => {
         //     })
         //     .catch((errrror) => console.log("you catched chukkkks"));
     } else {
-        const res = await axios.get("https://official-joke-api.appspot.com/random_joke");
+        const res = await axios.get(
+            "https://official-joke-api.appspot.com/random_joke"
+        );
         console.log("the third api==>", res.data.setup);
         return res.data.setup;
-
     }
 };
 
@@ -121,7 +121,6 @@ switch (day) {
 }
 document.getElementById("day").innerHTML = day;
 
-// var todayDate = new Date().getDay()
 document.getElementById("weather-date").innerHTML =
     today.getFullYear() +
     "-" +
@@ -133,7 +132,6 @@ document.getElementById("weather-date").innerHTML =
     today.getHours() +
     ":" +
     today.getMinutes();
-
 fetch(
         "https://api.openweathermap.org/data/2.5/weather?q=Barcelona&appid=9222249f0f6804cdc4bf807404b3a139"
     )
@@ -172,3 +170,24 @@ button.addEventListener("click", function() {
         })
         .catch((error) => console.log("===>wrong smth"));
 });
+
+const el = document.getElementById("back_image");
+
+function divImage() {
+    var numImage = Math.ceil(Math.random() * 6);
+
+    switch (numImage) {
+        case 1:
+            el.classList.toggle("back_img1");
+        case 2:
+            el.classList.toggle("back_img2");
+        case 3:
+            el.classList.toggle("back_img3");
+        case 4:
+            el.classList.toggle("back_img4");
+        case 5:
+            el.classList.toggle("back_img5");
+        case 6:
+            el.classList.toggle("back_img6");
+    }
+}
